@@ -1,0 +1,15 @@
+include setup
+include main
+
+!!!html
+html
+    head
+        title Google Alarm Clock
+        link(rel="stylesheet",href="/css/bootstrap.css")
+        link(rel="stylesheet",href="/css/style.css")
+    body
+        block setup
+        block main
+        script(src="/js/jquery.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="/js/main.js")

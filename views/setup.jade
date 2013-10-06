@@ -1,0 +1,22 @@
+block setup
+    #setup(style="display: none")
+        .jumbotron
+            .container
+                .row
+                    .col-lg-4.step#step-1
+                        h1 Step 1
+                        p Start by authorizing the application
+                        a#auth_button.btn.btn-default Authorize
+                    .col-lg-4.step#step-2
+                        h1 Step 2
+                        p Choose the calendar you want to use
+                        .row
+                            .col-lg-8.col-sm-8.col-xs-8
+                                select.form-control#calendar_select
+                                    option Loading calendars...
+                            .col-lg-4.col-sm-4.col-xs-4
+                                a.btn.btn-default#calendar_ok Ok
+                    .col-lg-4.step#step-3
+                        h1 Step 3
+                        p Configure the app
+                        a.btn.btn-success#setup_done Let's start!

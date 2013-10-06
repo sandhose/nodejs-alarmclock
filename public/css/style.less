@@ -1,0 +1,84 @@
+#setup {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #fff;
+  .jumbotron {
+    margin-top: 50px;
+  }
+}
+
+.step {
+  opacity: 0;
+  -webkit-transition: opacity .5s ease-in-out, color .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out, color .5s ease-in-out;
+  transition: opacity .5s ease-in-out, color .5s ease-in-out;
+  &.active {
+    opacity: 1;
+  }
+  &.done {
+    opacity: 1;
+    color: #888;
+  }
+  select {
+    display: inline-block;
+  }
+}
+
+@mainColor: #5483FA;
+
+#main .select-line {
+  height: 610px;
+  width: 10px;
+  background-color: @mainColor;
+  float: left;
+  margin-left: 50px;
+}
+
+#main .select-caret {
+  border-left: solid 20px @mainColor;
+  border-top: solid 20px transparent;
+  border-bottom: solid 20px transparent;
+  height: 0;
+  width: 0;
+  margin-left: 60px;
+  margin-top: 80px;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+#main .big-time {
+  font-size: 84px;
+  color: @mainColor;
+  margin: 0;
+}
+
+#main .alarm-sentence {
+  font-size: 30px;
+  margin: 0;
+}
+
+#main input#prepare_time {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  outline: none;
+}
+
+#main input#prepare_time:focus,
+#main input#prepare_time:hover {
+  background-color: @mainColor;
+  color: white;
+}
+
+#main .big-time:hover {
+  background-color: @mainColor;
+  color: #FFF;
+}

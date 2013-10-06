@@ -1,0 +1,23 @@
+block main
+    #main(style="display: none;")
+        .container
+            .row
+                .col-lg-6
+                .col-lg-1
+                    .select-line
+                    .select-caret
+                .col-lg-5
+                    div.alarm-sentence next alarm set to
+                    div.big-time#next-alarm ...
+                    div.alarm-sentence
+                      | because
+                      br
+                      | my first lesson is at
+                    div.big-time#next_lesson_time ...
+                    div.alarm-sentence
+                      | tomorrow and i take
+                    input.big-time#prepare_time(type="text",value="...")
+                    div.alarm-sentence
+                      | to wake me up
+                      br
+                      | and go to school

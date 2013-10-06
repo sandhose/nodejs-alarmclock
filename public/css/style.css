@@ -1,0 +1,73 @@
+#setup {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #fff;
+}
+#setup .jumbotron {
+  margin-top: 50px;
+}
+.step {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+.step.active {
+  opacity: 1;
+}
+.step.done {
+  opacity: 1;
+  color: #888;
+}
+.step select {
+  display: inline-block;
+}
+#main .select-line {
+  height: 610px;
+  width: 10px;
+  background-color: #5483fa;
+  float: left;
+  margin-left: 50px;
+}
+#main .select-caret {
+  border-left: solid 20px #5483fa;
+  border-top: solid 20px transparent;
+  border-bottom: solid 20px transparent;
+  height: 0;
+  width: 0;
+  margin-left: 60px;
+  margin-top: 80px;
+}
+#main {
+  margin-top: 20px;
+}
+#main .big-time {
+  font-size: 84px;
+  color: #5483fa;
+  margin: 0;
+}
+#main .alarm-sentence {
+  font-size: 30px;
+  margin: 0;
+}
+#main input#prepare_time {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  outline: none;
+}
+#main input#prepare_time:focus,
+#main input#prepare_time:hover {
+  background-color: #5483fa;
+  color: white;
+}
+#main .big-time:hover {
+  background-color: #5483fa;
+  color: #FFF;
+}
