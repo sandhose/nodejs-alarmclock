@@ -61,6 +61,8 @@ AlarmClock.prototype = {
             socket.on("calendar select", this.calendarSelect.bind(this));
             socket.on("setup done", this.setupDone.bind(this));
             socket.on("update", this.update.bind(this));
+            socket.on("reset config", this.resetConfig.bind(this, socket));
+            socket.on("request log", this.requestLog.bind(this));
             this.emitStatus(socket);
         }.bind(this));
     },
@@ -101,10 +103,32 @@ AlarmClock.prototype = {
                     this.OAuth2Credentials = result[i].value;
                 }
                 else if(result[i].key == "calendarId") {
-                    this.calendarId = result[i].calendarId;
+                    this.calendarId = result[i].value;
                 }
             }
+            
+            if(this.getOAuth2Client()) {
+                this.setupDone();
+            }
         }.bind(this));
+    },
+    resetConfig: function(socket) {
+        this.calendarId = null;
+        this.OAuth2Credentials = undefined;
+        this.OAuth2Client = undefined;
+        this.appSetupDone = false;
+        
+        this.saveConfig();
+        
+        if(socket) {
+            this.emitStatus(socket);
+        }
+    },
+    requestLog: function() {
+        console.log({
+            credentials: this.OAuth2Credentials,
+            calendarId: this.calendarId
+        });
     },
     getOAuth2Client: function() {
         if(this.OAuth2Client == undefined) {
@@ -120,7 +144,7 @@ AlarmClock.prototype = {
     generateAuthURL: function() {
         return this.getOAuth2Client().generateAuthUrl({
             access_type: 'offline',
-            scope: 'https://www.googleapis.com/auth/calendar.readonly'
+            scope: 'https://www.googleapis.com/auth/calendar'
         });
     },
     emitStatus: function(socket) {
@@ -260,10 +284,32 @@ AlarmClock.prototype = {
         if(this.OAuth2Credentials && this.calendarId) {
             this.appSetupDone = true;
             this.update(this.emitStatus.bind(this, io.sockets));
-            this.db.collection("config");
+            this.saveConfig();
             return true;
         }
         else return false;
+    },
+    saveConfig: function() {
+        this.db.collection("config").update({
+            key: "calendarId"
+        }, {
+            $set: {
+                value: this.calendarId
+            }
+        }, {
+            upsert: true,
+            w: 0
+        });
+        this.db.collection("config").update({
+            key: "credentials"
+        }, {
+            $set: {
+                value: this.OAuth2Credentials
+            }
+        }, {
+            upsert: true,
+            w: 0
+        });
     },
     update: function(callback) {
         var updated = {};
