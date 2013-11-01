@@ -46,7 +46,9 @@ AlarmManager.prototype = {
             }).animate({
                 marginTop: "70px",
                 opacity: 1
-            })
+            });
+            
+            $('#main').hide();
         }
 
         if(data.setupStep) this.setupStep = data.setupStep;
