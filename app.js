@@ -12,8 +12,8 @@ io.set("log level", 2);
 
 app.configure("all", function(){
     app.set('port', process.env.PORT || 1337);
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
+    // app.set('views', __dirname + '/views');
+    // app.set('view engine', 'jade');
     app.use(require('less-middleware')({ src: __dirname + '/public' }));
     app.use(express.favicon());
     app.use(express.logger('dev'));

@@ -54,7 +54,7 @@
   font-size: 30px;
   margin: 0;
 }
-#main input#prepare_time {
+#main input.big-time {
   background-color: transparent;
   border: none;
   margin: 0;
@@ -62,8 +62,8 @@
   width: 100%;
   outline: none;
 }
-#main input#prepare_time:focus,
-#main input#prepare_time:hover {
+#main input.big-time:focus,
+#main input.big-time:hover {
   background-color: #5483fa;
   color: white;
 }
