@@ -54,7 +54,7 @@
   font-size: 30px;
   margin: 0;
 }
-#main input.big-time {
+#main .big-time input {
   background-color: transparent;
   border: none;
   margin: 0;
@@ -62,8 +62,8 @@
   width: 100%;
   outline: none;
 }
-#main input.big-time:focus,
-#main input.big-time:hover {
+#main .big-time input:focus,
+#main .big-time input:hover {
   background-color: #5483fa;
   color: white;
 }
