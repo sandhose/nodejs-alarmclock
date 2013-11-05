@@ -36,12 +36,12 @@
         <div class="jumbotron">
           <div class="container">
             <div class="row">
-              <div {{bind-attr class=":col-lg-4 :step SetupController.step1:active:done"}}>
+              <div {{bind-attr class=":col-lg-4 :step ApplicationController.step1:active:done"}}>
                 <h1>Step 1</h1>
                 <p>Start by authorizing the application</p>
                 <a {{action 'authorize'}} class="btn btn-default">Authorize</a>
               </div>
-              <div {{bind-attr class=":col-lg-4 :step step2:active"}}>
+              <div {{bind-attr class=":col-lg-4 :step ApplicationController.step2:active"}}>
                 <h1>Step 2</h1>
                 <p>Choose the calendar you want</p>
                 <div class="row">

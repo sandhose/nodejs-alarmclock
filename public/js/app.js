@@ -37,19 +37,21 @@ App.Router.map(function() {
 });
 
 App.ApplicationController = Ember.Controller.extend({
+    status: "connecting",
+    setupStep: 0,
     updateStatus: function() {
         var status = this.get("status");
         if(status == "setup") {
             this.transitionTo("setup");
+            this.set("step1", (step == 1));
+            this.set("step2", (step == 2));
+            this.set("step3", (step == 3));
         }
         console.log(status);
     }
 });
 
 App.ApplicationRoute = Ember.Route.extend({
-    model: function() {
-        return App.Status;
-    },
     setupController: function() {
         var self = this;
         console.log("Initialize socket.io");
@@ -68,15 +70,11 @@ App.ApplicationRoute = Ember.Route.extend({
 });
 
 App.SetupController = Ember.Controller.extend({
-    calendar: [],
-    calendarId: null,
-    setupStep: 0,
-    updateStatus: function() {
-        var step = App.Status.get("setupStep");
-        this.set("step1", (step == 1));
-        this.set("step2", (step == 2));
-        this.set("step3", (step == 3));
-        console.log(this);
+    needs: ["application"],
+    actions: {
+        authorize: function() {
+            console.log("Auth");
+        }
     }
 });
 
